@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン - コンテンツアクセス</title>
+    <style>
+        /* --- スタイル設定 (変更なし) --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 95vh;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 35px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #content-section {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        #login-section h2 {
+            margin-top: 0;
+            margin-bottom: 25px;
+            color: #1c1e21;
+            font-size: 1.5em;
+        }
+        #login-section p {
+            margin-bottom: 10px;
+            color: #606770;
+        }
+        #login-section input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 12px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        #login-section input[type="password"]:focus {
+            border-color: #1877f2;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+        }
+        #login-section button {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+            box-sizing: border-box;
+        }
+        #login-section button:hover {
+            background-color: #166fe5;
+        }
+        #error-message {
+            color: #fa3e3e;
+            margin-top: 15px;
+            font-weight: bold;
+            display: none;
+            font-size: 0.9em;
+        }
+
+        /* --- コンテンツエリアのスタイル (リンク用に調整) --- */
+        #content-section a#target-link { /* IDセレクタに変更し、スタイル調整 */
+            display: inline-block; /* ブロック要素のように扱いつつインライン配置 */
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #28a745; /* 例: 緑色のボタン */
+            color: white;
+            text-decoration: none; /* 下線を消す */
+            border-radius: 6px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+        #content-section a#target-link:hover {
+            background-color: #218838; /* ホバー時少し暗く */
+        }
+         #content-section p#success-message { /* メッセージ用のスタイル */
+            font-size: 1.2em;
+            margin-top: 0;
+            margin-bottom: 15px; /* リンクとの間隔 */
+            color: #1c1e21;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="login-section" class="container">
+        <h2>ログイン</h2>
+        <p>パスワードを入力してください:</p>
+        <input type="password" id="password-input" placeholder="パスワード">
+        <button onclick="checkPassword()">ログイン</button>
+        <p id="error-message">パスワードが違います。</p>
+    </div>
+
+    <div id="content-section" class="container">
+        <p id="success-message"></p>
+        <a id="target-link" href="#" target="_blank" rel="noopener noreferrer"></a>
+    </div>
+
+    <script>
+        const asdfdasdfddfdfff = "oh3q09ruqp39rfjwwea0w9e"; 
+
+        const encodedTargetUrl = 'aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9zaHVfZGNjP3V0bV9zb3VyY2U9aWdfd2ViX2J1dHRvbl9zaGFyZV9zaGVldCZpZ3NoPVpETmxaRGMwTXpJeE53PT0='; 
+        const encodedSuccessMessageText = 'RE3jgafjgb7jgaTjgoDjgonjgorjgofjgYbjgajlhaXlips='; 
+        const encodedLinkText = '44Kv44Oq44OD44Kv77yB';
+
+        const passwordInput = document.getElementById('password-input');
+        const loginSection = document.getElementById('login-section');
+        const contentSection = document.getElementById('content-section');
+        const errorMessage = document.getElementById('error-message');
+        const successMessage = document.getElementById('success-message');
+        const targetLink = document.getElementById('target-link');
+        function decodeBase64(encodedString) {
+            try {
+                const binaryString = atob(encodedString);
+                const bytes = new Uint8Array(binaryString.length);
+                for (let i = 0; i < binaryString.length; i++) {
+                    bytes[i] = binaryString.charCodeAt(i);
+                }
+                return new TextDecoder().decode(bytes);
+            } catch (e) {
+                console.error("Base64デコードエラー:", e);
+                 if (encodedString === encodedTargetUrl) return '#';
+                return "デコードエラー";
+            }
+        }
+
+        function checkPassword() {
+            const enteredPassword = passwordInput.value;
+
+            if (enteredPassword === asdfdasdfddfdfff) {
+                const decodedUrl = decodeBase64(encodedTargetUrl);
+                const decodedMessage = decodeBase64(encodedSuccessMessageText);
+                const decodedLinkTextContent = decodeBase64(encodedLinkText);
+
+                successMessage.textContent = decodedMessage;
+                targetLink.href = decodedUrl;
+                targetLink.textContent = decodedLinkTextContent;
+
+                loginSection.style.display = 'none';
+                contentSection.style.display = 'flex';
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+                passwordInput.value = '';
+                passwordInput.focus();
+                contentSection.style.display = 'none';
+            }
+        }
+        passwordInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                checkPassword();
+            }
+        });
+    </script>
+
+</body>
+</html>
